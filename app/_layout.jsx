@@ -5,7 +5,11 @@ import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
 const _layout = () => {
   return (
-    <Tabs>
+    <Tabs
+    screenOptions={{
+      headerTitle:"PESTIFY",
+
+    }}>
         <Tabs.Screen
         name="index"
         options={{
