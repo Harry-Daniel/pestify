@@ -1,6 +1,7 @@
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const Home = () => {
+  const pressHandler =()=>console.log("camera opens");
   return (
     <View style={styles.outerContainer}>
       <View style={styles.innerContainer}>
@@ -16,6 +17,7 @@ const Home = () => {
             styles.buttonInnerContainer,
             pressed && styles.buttonPressed,
           ]}
+          onPress={pressHandler}
         >
           {({ pressed }) => (
             <Text
