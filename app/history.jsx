@@ -1,11 +1,18 @@
-import { StyleSheet, Text, View } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 import HistoryTab from "../components/historyTab";
 
 const History = () => {
+  const items = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 },
+    
+  ];
   return (
-    <View style={styles.container}>
-      <HistoryTab/>
-      
+    <View >
+      <FlatList
+        data={items}
+        keyExtractor={(item) => item.id}
+        renderItem={HistoryTab}
+        style={styles.container}
+      />
     </View>
   );
 };
@@ -13,10 +20,8 @@ const History = () => {
 export default History;
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  
+  container:{
+    marginVertical:"20%",
+
+  }
 });

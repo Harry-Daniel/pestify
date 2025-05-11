@@ -3,13 +3,15 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 const HistoryTab = () => {
     const pressHandler=()=>console.log("tab opens");
   return (
-    <View style={styles.tabOuterContainer}>
-        <Pressable style={({pressed})=>[styles.tabInnerContainer,pressed&&styles.tabPressed]}
-        android_ripple={{ color: "#42bcf5" }}
-        onPress={pressHandler} >
-          <Text style={styles.pestName}>Army Ant</Text>
-          <Text style={styles.timeElapsed}>10 mins ago</Text>
-        </Pressable>
+    <View style={styles.container}>
+      <View style={styles.tabOuterContainer}>
+          <Pressable style={({pressed})=>[styles.tabInnerContainer,pressed&&styles.tabPressed]}
+          android_ripple={{ color: "#42bcf5" }}
+          onPress={pressHandler} >
+            <Text style={styles.pestName}>Army Ant</Text>
+            <Text style={styles.timeElapsed}>10 mins ago</Text>
+          </Pressable>
+      </View>
     </View>
   );
 };
@@ -17,7 +19,15 @@ const HistoryTab = () => {
 export default HistoryTab;
 
 const styles = StyleSheet.create({
+    container:{
+      flex:1,
+      justifyContent:"center",
+      alignItems:"center",
+      overflow:"hidden",
+    },
     tabOuterContainer:{
+      marginVertical:16,
+      alignItems:"center",
         overflow:"hidden",
         borderRadius: 40,
     },
