@@ -5,7 +5,7 @@ const _layout = () => {
   return (
     <Tabs
     screenOptions={{
-      headerTitle:"PESTIFY",
+      headerShown:false,
 
     }}>
         <Tabs.Screen

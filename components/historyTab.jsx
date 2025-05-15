@@ -1,16 +1,26 @@
+
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-const HistoryTab = () => {
-    const pressHandler=()=>console.log("tab opens");
+const HistoryTab = ({navigation}) => {
+  
+  const pressHandler = () => {
+    console.log("tab opens")
+    navigation.navigate("detail")
+  };
   return (
     <View style={styles.container}>
       <View style={styles.tabOuterContainer}>
-          <Pressable style={({pressed})=>[styles.tabInnerContainer,pressed&&styles.tabPressed]}
+        <Pressable
+          style={({ pressed }) => [
+            styles.tabInnerContainer,
+            pressed && styles.tabPressed,
+          ]}
           android_ripple={{ color: "#42bcf5" }}
-          onPress={pressHandler} >
-            <Text style={styles.pestName}>Army Ant</Text>
-            <Text style={styles.timeElapsed}>10 mins ago</Text>
-          </Pressable>
+          onPress={pressHandler}
+        >
+          <Text style={styles.pestName}>Army Ant</Text>
+          <Text style={styles.timeElapsed}>10 mins ago</Text>
+        </Pressable>
       </View>
     </View>
   );
@@ -19,23 +29,23 @@ const HistoryTab = () => {
 export default HistoryTab;
 
 const styles = StyleSheet.create({
-    container:{
-      flex:1,
-      justifyContent:"center",
-      alignItems:"center",
-      overflow:"hidden",
-    },
-    tabOuterContainer:{
-      marginVertical:16,
-      alignItems:"center",
-        overflow:"hidden",
-        borderRadius: 40,
-    },
+  container: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    overflow: "hidden",
+  },
+  tabOuterContainer: {
+    marginVertical: 16,
+    alignItems: "center",
+    overflow: "hidden",
+    borderRadius: 40,
+  },
   tabInnerContainer: {
     width: "80%",
     flexDirection: "row",
     justifyContent: "space-between",
-    alignItems:"center",
+    alignItems: "center",
     backgroundColor: "#0077cc",
     padding: 10,
     borderRadius: 40,
@@ -55,9 +65,9 @@ const styles = StyleSheet.create({
     paddingHorizontal: 20,
     color: "white",
   },
-  tabPressed:{
-    backgroundColor:"#00a4f0",
-    elevation:2,
+  tabPressed: {
+    backgroundColor: "#00a4f0",
+    elevation: 2,
     shadowOffset: { width: 0, height: 1 },
     shadowRadius: 4,
   },

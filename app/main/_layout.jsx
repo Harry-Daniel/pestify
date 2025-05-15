@@ -4,8 +4,9 @@ const _layout = () => {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
-      }}
+      headerTitle:"PESTIFY",
+
+    }}
     >
       <Stack.Screen
         name="index"

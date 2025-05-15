@@ -4,13 +4,23 @@ const _layout = () => {
   return (
     <Stack
       screenOptions={{
-        headerShown: false,
-      }}
+      headerTitle:"PESTIFY",
+
+    }}
     >
       <Stack.Screen
         name="index"
         options={{
           title: "History",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="history" size={size} color={color} />
+          ),
+        }}
+      />
+      <Stack.Screen
+        name="detail"
+        options={{
+          title: "Detail",
           tabBarIcon: ({ color, size }) => (
             <FontAwesome name="history" size={size} color={color} />
           ),
