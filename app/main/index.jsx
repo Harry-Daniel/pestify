@@ -1,7 +1,12 @@
+import { useNavigation } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const Home = () => {
-  const pressHandler =()=>console.log("camera opens");
+  const navigation = useNavigation();
+  const pressHandler = () => {
+    console.log("camera opens");
+    navigation.navigate("analyse")
+  };
   return (
     <View style={styles.outerContainer}>
       <View style={styles.innerContainer}>
@@ -12,7 +17,7 @@ const Home = () => {
       </View>
       <View style={styles.buttonOuterContainer}>
         <Pressable
-          android_ripple={{ color: "#42bcf5" }} 
+          android_ripple={{ color: "#42bcf5" }}
           style={({ pressed }) => [
             styles.buttonInnerContainer,
             pressed && styles.buttonPressed,
