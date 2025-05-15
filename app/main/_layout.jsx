@@ -26,6 +26,15 @@ const _layout = () => {
           ),
         }}
       />
+      <Stack.Screen
+        name="detail"
+        options={{
+          title: "Detail",
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="home" size={size} color={color} />
+          ),
+        }}
+      />
     </Stack>
   );
 };

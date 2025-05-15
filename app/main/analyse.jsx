@@ -1,7 +1,12 @@
+import { useNavigation } from "expo-router";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
 const Analyse = () => {
-  const pressHandler = () => console.log("detail Screen opens");
+  const navigation = useNavigation();
+  const pressHandler = () => {
+    console.log("detail Screen opens");
+    navigation.navigate("detail");
+  };
   return (
     <View style={styles.outerContainer}>
       <View style={styles.innerContainer}>
