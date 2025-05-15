@@ -1,5 +1,5 @@
 import { FlatList, StyleSheet, View } from "react-native";
-import HistoryTab from "../components/historyTab";
+import HistoryTab from "../../components/historyTab";
 
 const History = () => {
   const items = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 },

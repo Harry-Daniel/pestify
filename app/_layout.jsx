@@ -1,8 +1,6 @@
-import { View, Text } from 'react-native'
-import React from 'react'
-import { Tabs } from 'expo-router'
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import { Tabs } from 'expo-router';
 const _layout = () => {
   return (
     <Tabs
@@ -11,7 +9,7 @@ const _layout = () => {
 
     }}>
         <Tabs.Screen
-        name="index"
+        name="main"
         options={{
             title:"Home",
             tabBarIcon:({color,size})=><AntDesign name="home" size={size} color={color} />
