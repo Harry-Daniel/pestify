@@ -4,7 +4,6 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 const Analyse = () => {
   const navigation = useNavigation();
   const pressHandler = () => {
-    console.log("detail Screen opens");
     navigation.navigate("detail");
   };
   return (
