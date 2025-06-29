@@ -4,8 +4,7 @@ import { Pressable, StyleSheet, Text, View } from "react-native";
 const Home = () => {
   const navigation = useNavigation();
   const pressHandler = () => {
-    console.log("camera opens");
-    navigation.navigate("analyse")
+    navigation.navigate("camera");
   };
   return (
     <View style={styles.outerContainer}>

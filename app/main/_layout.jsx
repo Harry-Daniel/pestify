@@ -18,6 +18,15 @@ const _layout = () => {
         }}
       />
       <Stack.Screen
+        name="camera"
+        options={{
+          title: "Camera",
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Stack.Screen
         name="analyse"
         options={{
           title: "Analyse",
