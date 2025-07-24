@@ -1,11 +1,42 @@
+import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "expo-router";
+import { useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
+import PhotoPreviewSection from "../../components/photoPreviewSection";
 
 const Home = () => {
+  const [photo, setPhoto] = useState(null);
   const navigation = useNavigation();
-  const pressHandler = () => {
+  const capturePressHandler = () => {
     navigation.navigate("camera");
   };
+  const uploadPressHandler = async () => {
+    try {
+      let result = {};
+      await ImagePicker.requestMediaLibraryPermissionsAsync();
+      result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        allowsEditing: true,
+        aspect: [1, 1],
+        quality: 1,
+      });
+      if (result) {
+        setPhoto(result);
+      }
+    } catch {
+      console.log(error);
+    }
+  };
+
+  if (photo)
+    return (
+      <PhotoPreviewSection
+        photo={photo}
+        handleRetakePhoto={handleRetakePhoto}
+        handleUpload={uploadHandler}
+      />
+    );
+
   return (
     <View style={styles.outerContainer}>
       <View style={styles.innerContainer}>
@@ -14,23 +45,43 @@ const Home = () => {
         </Text>
         <Text style={styles.detectText}>Let's detect some pests</Text>
       </View>
-      <View style={styles.buttonOuterContainer}>
-        <Pressable
-          android_ripple={{ color: "#42bcf5" }}
-          style={({ pressed }) => [
-            styles.buttonInnerContainer,
-            pressed && styles.buttonPressed,
-          ]}
-          onPress={pressHandler}
-        >
-          {({ pressed }) => (
-            <Text
-              style={[styles.buttonText, pressed && styles.buttonTextPressed]}
-            >
-              Capture
-            </Text>
-          )}
-        </Pressable>
+      <View style={styles.buttonsContainer}>
+        <View style={styles.buttonOuterContainer}>
+          <Pressable
+            android_ripple={{ color: "#42bcf5" }}
+            style={({ pressed }) => [
+              styles.buttonInnerContainer,
+              pressed && styles.buttonPressed,
+            ]}
+            onPress={capturePressHandler}
+          >
+            {({ pressed }) => (
+              <Text
+                style={[styles.buttonText, pressed && styles.buttonTextPressed]}
+              >
+                Capture
+              </Text>
+            )}
+          </Pressable>
+        </View>
+        <View style={styles.buttonOuterContainer}>
+          <Pressable
+            android_ripple={{ color: "#42bcf5" }}
+            style={({ pressed }) => [
+              styles.buttonInnerContainer,
+              pressed && styles.buttonPressed,
+            ]}
+            onPress={uploadPressHandler}
+          >
+            {({ pressed }) => (
+              <Text
+                style={[styles.buttonText, pressed && styles.buttonTextPressed]}
+              >
+                Upload
+              </Text>
+            )}
+          </Pressable>
+        </View>
       </View>
     </View>
   );
@@ -59,10 +110,14 @@ const styles = StyleSheet.create({
   detectText: {
     fontSize: 16,
   },
+  buttonsContainer: {
+    flexDirection: "row",
+  },
   buttonOuterContainer: {
     borderRadius: 8,
     overflow: "hidden",
     margin: 20,
+    marginVertical: 10,
   },
   buttonInnerContainer: {
     paddingVertical: 12,
