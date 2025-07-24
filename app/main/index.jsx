@@ -15,13 +15,14 @@ const Home = () => {
       let result = {};
       await ImagePicker.requestMediaLibraryPermissionsAsync();
       result = await ImagePicker.launchImageLibraryAsync({
-        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        mediaTypes: "images",
         allowsEditing: true,
         aspect: [1, 1],
         quality: 1,
+        base64: true,
       });
-      if (result) {
-        setPhoto(result);
+      if (!result.canceled && result.assets?.length > 0) {
+        setPhoto(result.assets[0]); // 👈 Use the first image only
       }
     } catch {
       console.log(error);
@@ -41,6 +42,8 @@ const Home = () => {
         handleUpload={uploadHandler}
       />
     );
+
+  
 
   return (
     <View style={styles.outerContainer}>
