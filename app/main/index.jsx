@@ -28,11 +28,16 @@ const Home = () => {
     }
   };
 
+  const handleUploadPhoto = () => setPhoto(null);
+  const uploadHandler = () => {
+    navigation.navigate("analyse");
+  };
+
   if (photo)
     return (
       <PhotoPreviewSection
         photo={photo}
-        handleRetakePhoto={handleRetakePhoto}
+        handleRetakePhoto={handleUploadPhoto}
         handleUpload={uploadHandler}
       />
     );
