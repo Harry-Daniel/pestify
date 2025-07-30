@@ -6,6 +6,7 @@ import PhotoPreviewSection from "../../components/photoPreviewSection";
 
 const Home = () => {
   const [photo, setPhoto] = useState(null);
+  const [pestName, setPestName] = useState(null);
   const navigation = useNavigation();
   const capturePressHandler = () => {
     navigation.navigate("camera");
@@ -31,7 +32,9 @@ const Home = () => {
 
   const handleUploadPhoto = () => setPhoto(null);
   const uploadHandler = () => {
-    navigation.navigate("analyse");
+    navigation.navigate("detail", {
+      pest_name: pestName,
+    });
   };
 
   if (photo)
@@ -40,10 +43,9 @@ const Home = () => {
         photo={photo}
         handleRetakePhoto={handleUploadPhoto}
         handleUpload={uploadHandler}
+        setPestName={setPestName}
       />
     );
-
-  
 
   return (
     <View style={styles.outerContainer}>

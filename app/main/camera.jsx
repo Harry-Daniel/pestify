@@ -9,11 +9,14 @@ export default function Camera() {
   const [facing, setFacing] = useState("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState(null);
+  const [pestName, setPestName] = useState(null);
   const cameraRef = useRef(null);
   const navigation = useNavigation();
 
   const uploadHandler = () => {
-    navigation.navigate("analyse");
+    navigation.navigate("detail", {
+      pest_name: pestName,
+    });
   };
 
   if (!permission) {
@@ -57,6 +60,8 @@ export default function Camera() {
         photo={photo}
         handleRetakePhoto={handleRetakePhoto}
         handleUpload={uploadHandler}
+        setPestName={setPestName}
+        
       />
     );
 

@@ -1,10 +1,13 @@
 import { ScrollView, StyleSheet, Text, View } from "react-native";
 
+import { useRoute } from "@react-navigation/native";
 import List from "../../components/PestDetail/list";
 import Subtitle from "../../components/PestDetail/subtitle";
 
 const Detail = () => {
-
+  const route = useRoute();
+  const {pest_name} = route.params;
+  console.log("This is it", pest_name);
 
   return (
     <ScrollView style={styles.rootContainer}>
@@ -13,7 +16,7 @@ const Detail = () => {
 
       <View style={styles.listContainer}>
         <Subtitle>Effects of Pest</Subtitle>
-        <List data={["Can cause disease to plant","Hello World"]} />
+        <List data={["Can cause disease to plant", "Hello World"]} />
         <Subtitle>Recommendations</Subtitle>
         <List data={["Kill them now"]} />
       </View>
@@ -37,8 +40,7 @@ const styles = StyleSheet.create({
     fontSize: 24,
     margin: 8,
     textAlign: "center",
-    color:"#0364ad",
-    
+    color: "#0364ad",
   },
   detailText: {
     color: "white",
