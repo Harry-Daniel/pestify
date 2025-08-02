@@ -1,0 +1,137 @@
+{
+  "diamondback_Moth": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Plutella_xylostella_%28diamondback_moth%29.jpg",
+    "effects": [
+      "Feeds on leaves and creates holes, reducing photosynthesis",
+      "Causes stunted plant growth",
+      "Increases vulnerability to secondary infections"
+    ],
+    "recommendations": [
+      "Use insecticide-treated netting or Bacillus thuringiensis (Bt)",
+      "Rotate crops to disrupt lifecycle",
+      "Remove crop residues after harvest",
+      "Introduce parasitoid wasps",
+      "Use pheromone traps for monitoring"
+    ]
+  },
+  "fruit_flies": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Zeugodacus_cucurbitae.jpg",
+    "effects": [
+      "Lay eggs inside fruits causing internal damage",
+      "Accelerate fruit rotting and drop‑off",
+      "Reduce market value of produce"
+    ],
+    "recommendations": [
+      "Use bait traps to monitor and control populations",
+      "Harvest fruits early to avoid infestations",
+      "Destroy infested fruits to interrupt lifecycle",
+      "Apply protein bait sprays selectively",
+      "Use fruit‑bagging techniques"
+    ]
+  },
+  "aphid": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Aphis_gossypii_1.jpg",
+    "effects": [
+      "Suck sap from plant tissues leading to wilting",
+      "Transmit viral diseases between plants",
+      "Excrete honeydew that attracts sooty mold"
+    ],
+    "recommendations": [
+      "Spray neem oil or insecticidal soap",
+      "Introduce ladybugs and lacewings",
+      "Use reflective mulches to deter aphids",
+      "Remove infested plant parts",
+      "Avoid excessive nitrogen fertilization"
+    ]
+  },
+  "armyworm": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Spodoptera_frugiperda_01.jpg",
+    "effects": [
+      "Defoliate plants rapidly in large groups",
+      "Feed on stems and fruits causing severe yield loss",
+      "Can lead to complete crop destruction"
+    ],
+    "recommendations": [
+      "Scout fields regularly for early detection",
+      "Use biological pesticides like Bt or Spinosad",
+      "Apply pheromone traps to disrupt mating",
+      "Encourage birds and beneficial insects",
+      "Practice crop rotation and timely planting"
+    ]
+  },
+  "grasshopper": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Grasshopper.jpg",
+    "effects": [
+      "Feed on leaves, flowers, and stems",
+      "Create irregular holes in plant tissue",
+      "Cause significant defoliation in dry seasons"
+    ],
+    "recommendations": [
+      "Apply insecticide baits in affected zones",
+      "Keep field borders weed‑free",
+      "Encourage predators like birds and spiders",
+      "Use trap crops as decoys",
+      "Apply targeted insecticides in outbreaks"
+    ]
+  },
+  "redspider": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Tetranychus_urticae.jpg",
+    "effects": [
+      "Pierce plant cells and suck sap",
+      "Cause yellowing and bronzing of leaves",
+      "Lead to leaf drop and reduced yield"
+    ],
+    "recommendations": [
+      "Spray miticides or neem oil",
+      "Increase humidity to deter mites",
+      "Introduce predatory mites (e.g., Phytoseiulus)",
+      "Avoid pesticides that kill beneficial insects",
+      "Wash plants with water to dislodge mites"
+    ]
+  },
+  "stem_borer": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Chilo_partellus_stemborer.jpg",
+    "effects": [
+      "Bore into stems causing internal damage",
+      "Cause wilting and deadheart in young plants",
+      "Reduce nutrient flow and grain formation"
+    ],
+    "recommendations": [
+      "Remove crop residues after harvest",
+      "Plant pest‑resistant varieties",
+      "Apply systemic insecticides early",
+      "Adopt intercropping to disrupt pests",
+      "Use light traps to monitor moth activity"
+    ]
+  },
+  "unknown": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Question_mark_black.svg",
+    "effects": [
+      "Damage pattern unidentified",
+      "Potential threat to crop health",
+      "May spread if not investigated"
+    ],
+    "recommendations": [
+      "Isolate affected plants",
+      "Consult agricultural extension officers",
+      "Document symptoms and occurrence",
+      "Avoid replanting in infected soil",
+      "Use broad‑spectrum organic treatments"
+    ]
+  },
+  "whitefly": {
+    "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Bemisia_tabaci_adult.jpg",
+    "effects": [
+      "Suck plant sap causing leaf curling and yellowing",
+      "Transmit viral diseases (e.g. tomato yellow leaf curl)",
+      "Excrete honeydew leading to fungal growth"
+    ],
+    "recommendations": [
+      "Use yellow sticky traps to monitor adults",
+      "Spray neem oil or insecticidal soap",
+      "Remove heavily infested leaves",
+      "Introduce Encarsia formosa as a biological control",
+      "Avoid susceptible crops in hot seasons"
+    ]
+  }
+}
