@@ -35,6 +35,7 @@ const Home = () => {
     navigation.navigate("detail", {
       pest_name: pestName,
     });
+    setPhoto(null)
   };
 
   if (photo)

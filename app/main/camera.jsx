@@ -17,6 +17,7 @@ export default function Camera() {
     navigation.navigate("detail", {
       pest_name: pestName,
     });
+    setPhoto(null)
   };
 
   if (!permission) {

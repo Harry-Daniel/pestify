@@ -9,8 +9,8 @@ const Detail = () => {
   const route = useRoute();
   const { pest_name } = route.params;
   const pestImages = {
-    Diamondback_Moth: require("../../assets/pest_images/diamondback_moth.jpg"),
-    Fruit_Flies: require("../../assets/pest_images/fruit_flies.jpg"),
+    diamondback_moth: require("../../assets/pest_images/diamondback_moth.jpg"),
+    fruit_flies: require("../../assets/pest_images/fruit_flies.jpg"),
     aphid: require("../../assets/pest_images/aphids.jpg"),
     armyworm: require("../../assets/pest_images/armyworm.jpg"),
     grasshopper: require("../../assets/pest_images/grasshopper.jpg"),
