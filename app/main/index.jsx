@@ -1,16 +1,45 @@
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import * as ImagePicker from "expo-image-picker";
 import { useNavigation } from "expo-router";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 import PhotoPreviewSection from "../../components/photoPreviewSection";
+
+const STORAGE_KEY = "pestsIdentified";
 
 const Home = () => {
   const [photo, setPhoto] = useState(null);
   const [pestName, setPestName] = useState(null);
+  const [identifiedPestsList, setIdentifiedPestsList] = useState([]);
   const navigation = useNavigation();
   const capturePressHandler = () => {
     navigation.navigate("camera");
   };
+
+  console.log(identifiedPestsList);
+  useEffect(() => {
+    const loadNames = async () => {
+      try {
+        const storedNames = await AsyncStorage.getItem(STORAGE_KEY);
+        if (storedNames) {
+          setIdentifiedPestsList(JSON.parse(storedNames));
+        }
+      } catch (e) {
+        console.error("Failed to load names.", e);
+      }
+    };
+
+    loadNames();
+  }, []);
+
+  const saveNames = async (updatedNames) => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedNames));
+    } catch (e) {
+      console.error("Failed to save names.", e);
+    }
+  };
+
   const uploadPressHandler = async () => {
     try {
       let result = {};
@@ -35,7 +64,9 @@ const Home = () => {
     navigation.navigate("detail", {
       pest_name: pestName,
     });
-    setPhoto(null)
+    setPhoto(null);
+    const updatedNames = [...identifiedPestsList, pestName];
+    saveNames(updatedNames);
   };
 
   if (photo)

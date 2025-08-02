@@ -1,23 +1,52 @@
 import { AntDesign } from "@expo/vector-icons";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { CameraView, useCameraPermissions } from "expo-camera";
 import { useNavigation } from "expo-router";
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Button, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 import PhotoPreviewSection from "../../components/photoPreviewSection";
+
+const STORAGE_KEY = "pestsIdentified";
 
 export default function Camera() {
   const [facing, setFacing] = useState("back");
   const [permission, requestPermission] = useCameraPermissions();
   const [photo, setPhoto] = useState(null);
   const [pestName, setPestName] = useState(null);
+  const [identifiedPestsList, setIdentifiedPestsList] = useState([]);
   const cameraRef = useRef(null);
   const navigation = useNavigation();
+  console.log(identifiedPestsList);
+  useEffect(() => {
+    const loadNames = async () => {
+      try {
+        const storedNames = await AsyncStorage.getItem(STORAGE_KEY);
+        if (storedNames) {
+          setIdentifiedPestsList(JSON.parse(storedNames));
+        }
+      } catch (e) {
+        console.error("Failed to load names.", e);
+      }
+    };
+
+    loadNames();
+  }, []);
+
+  const saveNames = async (updatedNames) => {
+    try {
+      await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedNames));
+    } catch (e) {
+      console.error("Failed to save names.", e);
+    }
+  };
 
   const uploadHandler = () => {
     navigation.navigate("detail", {
       pest_name: pestName,
     });
-    setPhoto(null)
+    setPhoto(null);
+    const updatedNames = [...identifiedPestsList, pestName];
+    saveNames(updatedNames);
   };
 
   if (!permission) {
@@ -62,7 +91,6 @@ export default function Camera() {
         handleRetakePhoto={handleRetakePhoto}
         handleUpload={uploadHandler}
         setPestName={setPestName}
-        
       />
     );
 
