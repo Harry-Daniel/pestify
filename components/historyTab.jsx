@@ -1,11 +1,11 @@
-
+import { Fontisto } from "@expo/vector-icons";
 import { Pressable, StyleSheet, Text, View } from "react-native";
 
-const HistoryTab = ({navigation}) => {
-  
+const HistoryTab = ({ navigation, pestName }) => {
   const pressHandler = () => {
-    console.log("tab opens")
-    navigation.navigate("detail")
+    navigation.navigate("detail", {
+      pest_name: pestName,
+    });
   };
   return (
     <View style={styles.container}>
@@ -18,8 +18,8 @@ const HistoryTab = ({navigation}) => {
           android_ripple={{ color: "#42bcf5" }}
           onPress={pressHandler}
         >
-          <Text style={styles.pestName}>Army Ant</Text>
-          <Text style={styles.timeElapsed}>10 mins ago</Text>
+          <Text style={styles.pestName}>{pestName.toUpperCase()}</Text>
+          <Fontisto name="trash" size={24} color="white" />
         </Pressable>
       </View>
     </View>
