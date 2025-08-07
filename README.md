@@ -48,3 +48,8 @@ Join our community of developers creating universal apps.
 
 - [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
 - [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+
+<!-- UX upgrades
+When a pest that is in the list is scanned again , it should be filtered out of the list and added to the top.
+
+ -->
