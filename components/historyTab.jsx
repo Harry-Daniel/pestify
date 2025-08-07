@@ -19,7 +19,7 @@ const HistoryTab = ({ navigation, pestName }) => {
           onPress={pressHandler}
         >
           <Text style={styles.pestName}>{pestName.toUpperCase()}</Text>
-          <Fontisto name="eye" size={24} color="white" />
+          <Fontisto name="eye" size={16} color="white" />
         </Pressable>
       </View>
     </View>
