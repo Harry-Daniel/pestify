@@ -1,5 +1,6 @@
 import AntDesign from '@expo/vector-icons/AntDesign';
 import FontAwesome from '@expo/vector-icons/FontAwesome';
+import Ionicons from '@expo/vector-icons/Ionicons';
 import { Tabs } from 'expo-router';
 const _layout = () => {
   return (
@@ -20,6 +21,14 @@ const _layout = () => {
         options={{
             title:"History",
             tabBarIcon:({color,size})=><FontAwesome name="history" size={size} color={color} /> 
+        }}
+        
+        />
+        <Tabs.Screen
+        name="game"
+        options={{
+            title:"Game",
+            tabBarIcon:({color,size})=><Ionicons name="game-controller" size={size} color={color} /> 
         }}
         
         />
