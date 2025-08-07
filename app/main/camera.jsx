@@ -35,6 +35,7 @@ export default function Camera() {
   const saveNames = async (updatedNames) => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedNames));
+      // AsyncStorage.clear();
     } catch (e) {
       console.error("Failed to save names.", e);
     }
@@ -45,8 +46,9 @@ export default function Camera() {
       pest_name: pestName,
     });
     setPhoto(null);
-    if (!(pestName in identifiedPestsList)) {
+    if (!identifiedPestsList.includes(pestName)) {
       const updatedNames = [...identifiedPestsList, pestName];
+      setIdentifiedPestsList(updatedNames);
       saveNames(updatedNames);
     }
   };

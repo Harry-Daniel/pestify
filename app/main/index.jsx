@@ -60,14 +60,17 @@ const Home = () => {
   };
 
   const handleUploadPhoto = () => setPhoto(null);
+
   const uploadHandler = () => {
     navigation.navigate("detail", {
       pest_name: pestName,
     });
     setPhoto(null);
-    if (!(pestName in identifiedPestsList)){
-    const updatedNames = [...identifiedPestsList, pestName];
-    saveNames(updatedNames);}
+    if (!identifiedPestsList.includes(pestName)) {
+      const updatedNames = [...identifiedPestsList, pestName];
+      setIdentifiedPestsList(updatedNames)
+      saveNames(updatedNames);
+    }
   };
 
   if (photo)
