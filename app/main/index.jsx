@@ -65,8 +65,9 @@ const Home = () => {
       pest_name: pestName,
     });
     setPhoto(null);
+    if (!(pestName in identifiedPestsList)){
     const updatedNames = [...identifiedPestsList, pestName];
-    saveNames(updatedNames);
+    saveNames(updatedNames);}
   };
 
   if (photo)

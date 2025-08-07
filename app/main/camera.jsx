@@ -45,8 +45,10 @@ export default function Camera() {
       pest_name: pestName,
     });
     setPhoto(null);
-    const updatedNames = [...identifiedPestsList, pestName];
-    saveNames(updatedNames);
+    if (!(pestName in identifiedPestsList)) {
+      const updatedNames = [...identifiedPestsList, pestName];
+      saveNames(updatedNames);
+    }
   };
 
   if (!permission) {

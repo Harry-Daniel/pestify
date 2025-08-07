@@ -19,7 +19,7 @@ const HistoryTab = ({ navigation, pestName }) => {
           onPress={pressHandler}
         >
           <Text style={styles.pestName}>{pestName.toUpperCase()}</Text>
-          <Fontisto name="trash" size={24} color="white" />
+          <Fontisto name="eye" size={24} color="white" />
         </Pressable>
       </View>
     </View>
@@ -36,6 +36,7 @@ const styles = StyleSheet.create({
     overflow: "hidden",
   },
   tabOuterContainer: {
+    width:"100%",
     marginVertical: 16,
     alignItems: "center",
     overflow: "hidden",
