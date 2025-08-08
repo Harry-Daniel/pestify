@@ -30,8 +30,9 @@ const PhotoPreviewSection = ({
 
       try {
         setPest("Loading...");
-        // const response = await fetch("http://100.112.25.208:8000/api/predict/", { this is for using devices
-        const response = await fetch("http://10.0.2.2:8000/api/predict/", {
+
+        const response = await fetch("http://192.168.137.1:8000/api/predict/", { 
+        // const response = await fetch("http://10.0.2.2:8000/api/predict/", {
           method: "POST",
           headers: {
             "Content-Type": "multipart/form-data",
