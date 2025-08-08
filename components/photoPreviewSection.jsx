@@ -9,7 +9,7 @@ const PhotoPreviewSection = ({
   handleUpload,
   setPestName,
 }) => {
-  const [pest, setPest] = useState("No pest made");
+  const [pest, setPest] = useState("No pest detected");
   const [pestFound, setPestFound] = useState(false);
 
   useEffect(() => {
@@ -41,9 +41,14 @@ const PhotoPreviewSection = ({
 
         const json = await response.json();
         console.log("Prediction result:", json);
-        setPest(json.label + " detected");
-        setPestName(json.label);
-        setPestFound(true);
+        if (json.label === "unknown") {
+          setPest("No pest detected, retake image");
+        } else {
+          setPest(json.label + " detected");
+          setPestName(json.label);
+          setPestFound(true);
+        }
+
         // TODO: optionally lift result to parent with a callback if needed
       } catch (error) {
         setPest("No Pest detected");

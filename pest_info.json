@@ -14,7 +14,7 @@
       "Use pheromone traps for monitoring"
     ]
   },
-  
+
   "aphid": {
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Aphis_gossypii_1.jpg",
     "effects": [
@@ -60,22 +60,7 @@
       "Apply targeted insecticides in outbreaks"
     ]
   },
-  
-  "unknown": {
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Question_mark_black.svg",
-    "effects": [
-      "Damage pattern unidentified",
-      "Potential threat to crop health",
-      "May spread if not investigated"
-    ],
-    "recommendations": [
-      "Isolate affected plants",
-      "Consult agricultural extension officers",
-      "Document symptoms and occurrence",
-      "Avoid replanting in infected soil",
-      "Use broad‑spectrum organic treatments"
-    ]
-  },
+
   "whitefly": {
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Bemisia_tabaci_adult.jpg",
     "effects": [
