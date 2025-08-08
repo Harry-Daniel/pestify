@@ -10,7 +10,7 @@ const _layout = () => {
       <Stack.Screen
         name="index"
         options={{
-          title: "History",
+          title: "Game",
           tabBarIcon: ({ color, size }) => (
             <Ionicons name="game-controller" size={size} color={color} />
           ),

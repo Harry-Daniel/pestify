@@ -47,7 +47,12 @@ export default function Camera() {
     });
     setPhoto(null);
     if (!identifiedPestsList.includes(pestName)) {
-      const updatedNames = [...identifiedPestsList, pestName];
+      const updatedNames = [pestName, ...identifiedPestsList];
+      setIdentifiedPestsList(updatedNames);
+      saveNames(updatedNames);
+    } else {
+      const currentNames =  identifiedPestsList.filter((pest) => pest !== pestName)
+      const updatedNames = [pestName, ...currentNames];
       setIdentifiedPestsList(updatedNames);
       saveNames(updatedNames);
     }

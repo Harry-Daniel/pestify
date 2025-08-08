@@ -41,8 +41,8 @@ const PhotoPreviewSection = ({
 
         const json = await response.json();
         console.log("Prediction result:", json);
-        setPest(json.classified_pest + " detected");
-        setPestName(json.classified_pest);
+        setPest(json.label + " detected");
+        setPestName(json.label);
         setPestFound(true);
         // TODO: optionally lift result to parent with a callback if needed
       } catch (error) {

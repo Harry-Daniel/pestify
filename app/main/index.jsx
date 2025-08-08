@@ -35,6 +35,7 @@ const Home = () => {
   const saveNames = async (updatedNames) => {
     try {
       await AsyncStorage.setItem(STORAGE_KEY, JSON.stringify(updatedNames));
+      // AsyncStorage.clear();
     } catch (e) {
       console.error("Failed to save names.", e);
     }
@@ -67,8 +68,13 @@ const Home = () => {
     });
     setPhoto(null);
     if (!identifiedPestsList.includes(pestName)) {
-      const updatedNames = [...identifiedPestsList, pestName];
-      setIdentifiedPestsList(updatedNames)
+      const updatedNames = [pestName,...identifiedPestsList];
+      setIdentifiedPestsList(updatedNames);
+      saveNames(updatedNames);
+    } else {
+      const currentNames=identifiedPestsList.filter((pest) => pest !== pestName)
+      const updatedNames=[pestName,...currentNames]
+      setIdentifiedPestsList(updatedNames);
       saveNames(updatedNames);
     }
   };
