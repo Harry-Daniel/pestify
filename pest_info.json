@@ -14,21 +14,7 @@
       "Use pheromone traps for monitoring"
     ]
   },
-  "fruit_flies": {
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/4/4d/Zeugodacus_cucurbitae.jpg",
-    "effects": [
-      "Lay eggs inside fruits causing internal damage",
-      "Accelerate fruit rotting and drop‑off",
-      "Reduce market value of produce"
-    ],
-    "recommendations": [
-      "Use bait traps to monitor and control populations",
-      "Harvest fruits early to avoid infestations",
-      "Destroy infested fruits to interrupt lifecycle",
-      "Apply protein bait sprays selectively",
-      "Use fruit‑bagging techniques"
-    ]
-  },
+  
   "aphid": {
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Aphis_gossypii_1.jpg",
     "effects": [
@@ -74,36 +60,7 @@
       "Apply targeted insecticides in outbreaks"
     ]
   },
-  "redspider": {
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9c/Tetranychus_urticae.jpg",
-    "effects": [
-      "Pierce plant cells and suck sap",
-      "Cause yellowing and bronzing of leaves",
-      "Lead to leaf drop and reduced yield"
-    ],
-    "recommendations": [
-      "Spray miticides or neem oil",
-      "Increase humidity to deter mites",
-      "Introduce predatory mites (e.g., Phytoseiulus)",
-      "Avoid pesticides that kill beneficial insects",
-      "Wash plants with water to dislodge mites"
-    ]
-  },
-  "stem_borer": {
-    "image_url": "https://upload.wikimedia.org/wikipedia/commons/7/7b/Chilo_partellus_stemborer.jpg",
-    "effects": [
-      "Bore into stems causing internal damage",
-      "Cause wilting and deadheart in young plants",
-      "Reduce nutrient flow and grain formation"
-    ],
-    "recommendations": [
-      "Remove crop residues after harvest",
-      "Plant pest‑resistant varieties",
-      "Apply systemic insecticides early",
-      "Adopt intercropping to disrupt pests",
-      "Use light traps to monitor moth activity"
-    ]
-  },
+  
   "unknown": {
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/6/65/Question_mark_black.svg",
     "effects": [
