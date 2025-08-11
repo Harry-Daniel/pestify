@@ -1,5 +1,6 @@
 {
   "diamondback_moth": {
+    "about": "A tiny moth with a big appetite, the diamondback moth is a global menace to crucifer crops, capable of wiping out fields if left unchecked.",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/9/9f/Plutella_xylostella_%28diamondback_moth%29.jpg",
     "effects": [
       "Feeds on leaves and creates holes, reducing photosynthesis",
@@ -14,8 +15,8 @@
       "Use pheromone traps for monitoring"
     ]
   },
-
   "aphid": {
+    "about": "Small but mighty, aphids multiply fast and spread plant diseases with ease, turning lush leaves into wilted casualties.",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Aphis_gossypii_1.jpg",
     "effects": [
       "Suck sap from plant tissues leading to wilting",
@@ -31,6 +32,7 @@
     ]
   },
   "armyworm": {
+    "about": "Known as the night raiders, armyworms march in masses, stripping crops bare almost overnight.",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/56/Spodoptera_frugiperda_01.jpg",
     "effects": [
       "Defoliate plants rapidly in large groups",
@@ -46,6 +48,7 @@
     ]
   },
   "grasshopper": {
+    "about": "Jumping from plant to plant, grasshoppers can turn thriving fields into barren wastelands during dry spells.",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/5/5f/Grasshopper.jpg",
     "effects": [
       "Feed on leaves, flowers, and stems",
@@ -54,14 +57,14 @@
     ],
     "recommendations": [
       "Apply insecticide baits in affected zones",
-      "Keep field borders weed‑free",
+      "Keep field borders weed-free",
       "Encourage predators like birds and spiders",
       "Use trap crops as decoys",
       "Apply targeted insecticides in outbreaks"
     ]
   },
-
   "whitefly": {
+    "about": "These tiny white invaders weaken plants and spread devastating diseases, often going unnoticed until it’s too late.",
     "image_url": "https://upload.wikimedia.org/wikipedia/commons/0/0a/Bemisia_tabaci_adult.jpg",
     "effects": [
       "Suck plant sap causing leaf curling and yellowing",

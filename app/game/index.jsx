@@ -8,8 +8,12 @@ import {
   TouchableOpacity,
   View,
 } from "react-native";
+import pests from "../../pest_info.json";
 
-const index = () => {
+export default function Index() {
+  const [gameStage, setGameStage] = useState("start"); // "start" | "game" | "over"
+  const [score, setScore] = useState(0);
+
   const pestImages = {
     diamondback_moth: require("../../assets/pest_images/diamondback_moth.jpg"),
     aphid: require("../../assets/pest_images/aphids.jpg"),
@@ -19,25 +23,20 @@ const index = () => {
   };
 
   const allPests = Object.keys(pestImages);
-
   const getRandomPest = (remaining) =>
     remaining[Math.floor(Math.random() * remaining.length)];
 
   const [remainingPests, setRemainingPests] = useState([...allPests]);
   const [currentPest, setCurrentPest] = useState(getRandomPest(allPests));
   const [guess, setGuess] = useState("");
-  const [score, setScore] = useState(0);
 
-  const normalizeName = (name) => {
-    return name.toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
-  };
+  const normalizeName = (name) =>
+    name.toLowerCase().replace(/[-_]/g, " ").replace(/\s+/g, " ").trim();
 
   const isMatch = (input, correct) => {
     const normInput = normalizeName(input);
     const normCorrect = normalizeName(correct);
-
     if (normInput === normCorrect) return true;
-
     if (
       normInput === normCorrect + "s" ||
       normInput === normCorrect + "es" ||
@@ -46,69 +45,90 @@ const index = () => {
     ) {
       return true;
     }
-
     return false;
   };
 
-  const formatDisplayName = (name) => {
-    return normalizeName(name)
+  const formatDisplayName = (name) =>
+    normalizeName(name)
       .split(" ")
       .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
       .join(" ");
+
+  const startGame = () => {
+    setScore(0);
+    setRemainingPests([...allPests]);
+    setCurrentPest(getRandomPest(allPests));
+    setGuess("");
+    setGameStage("game");
   };
 
   const handleSubmit = () => {
-    if (isMatch(guess, currentPest)) {
+    let correct = isMatch(guess, currentPest);
+    if (correct) {
       setScore((prev) => prev + 1);
-      alert("✅ Correct!");
+      alert(`✅ Correct!\n ${pests[currentPest].about}`);
     } else {
-      alert(`❌ Wrong! It was ${formatDisplayName(currentPest)}`);
-    }
-
-    // Remove the current pest from remaining list
-    const newRemaining = remainingPests.filter((p) => p !== currentPest);
-
-    if (newRemaining.length === 0) {
       alert(
-        `🎉 Game Over! Final Score: ${
-          score + (isMatch(guess, currentPest) ? 1 : 0)
+        `❌ Wrong! It was ${formatDisplayName(currentPest)}.\n ${
+          pests[currentPest].about
         }`
       );
-      // Reset game
-      setRemainingPests([...allPests]);
-      setCurrentPest(getRandomPest(allPests));
-      setScore(0);
+    }
+
+    const newRemaining = remainingPests.filter((p) => p !== currentPest);
+    if (newRemaining.length === 0) {
+      setGameStage("over");
     } else {
       setRemainingPests(newRemaining);
       setCurrentPest(getRandomPest(newRemaining));
     }
-
     setGuess("");
   };
 
-  const handleQuit = () => {
-    setScore(0);
-    setGuess("");
-    setRemainingPests([...allPests]);
-    setCurrentPest(getRandomPest(allPests));
-    alert("Game ended!");
+  const quitGame = () => {
+    setGameStage("over");
   };
 
+  // ---------- SCREENS ----------
+  if (gameStage === "start") {
+    return (
+      <View style={styles.centerScreen}>
+        <Text style={styles.bigText}>Ready to Play?</Text>
+        <TouchableOpacity style={styles.startButton} onPress={startGame}>
+          <Text style={styles.buttonText}>Start</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  if (gameStage === "over") {
+    return (
+      <View style={styles.centerScreen}>
+        <Text style={styles.bigText}>🎉 Game Over!</Text>
+        <Text style={styles.scoreText}>Your Score: {score}</Text>
+        <TouchableOpacity
+          style={[styles.startButton, { backgroundColor: "#0364ad" }]}
+          onPress={() => setGameStage("start")}
+        >
+          <Text style={styles.buttonText}>Return to Start</Text>
+        </TouchableOpacity>
+      </View>
+    );
+  }
+
+  // ---------- GAME SCREEN ----------
   return (
     <ScrollView style={styles.rootContainer}>
-      {/* Score + Quit Section */}
       <View style={styles.scoreContainer}>
-        <TouchableOpacity style={styles.quitButton} onPress={handleQuit}>
+        <TouchableOpacity style={styles.quitButton} onPress={quitGame}>
           <Text style={styles.buttonText}>Quit</Text>
         </TouchableOpacity>
         <Text style={styles.scoreText}>Score: {score}</Text>
       </View>
 
-      {/* Pest Image */}
       <Image source={pestImages[currentPest]} style={styles.image} />
       <Text style={styles.title}>Guess the Pest?</Text>
 
-      {/* Input */}
       <View style={styles.inputboxCtn}>
         <TextInput
           style={styles.inputbox}
@@ -118,7 +138,6 @@ const index = () => {
         />
       </View>
 
-      {/* Submit Button */}
       <View style={styles.submitContainer}>
         <TouchableOpacity style={styles.submitButton} onPress={handleSubmit}>
           <Text style={styles.buttonText}>Submit</Text>
@@ -126,13 +145,34 @@ const index = () => {
       </View>
     </ScrollView>
   );
-};
-
-export default index;
+}
 
 const styles = StyleSheet.create({
   rootContainer: {
     marginBottom: 32,
+  },
+  centerScreen: {
+    flex: 1,
+    justifyContent: "center",
+    alignItems: "center",
+    padding: 20,
+    backgroundColor: "#0364ad",
+  },
+  bigText: {
+    fontSize: 28,
+    fontWeight: "bold",
+    color: "white",
+    marginBottom: 20,
+  },
+  startButton: {
+    backgroundColor: "#0364ad",
+    borderColor: "white",
+    borderWidth: 1,
+    marginTop: 10,
+
+    paddingVertical: 10,
+    paddingHorizontal: 30,
+    borderRadius: 8,
   },
   scoreContainer: {
     backgroundColor: "#0364ad",
