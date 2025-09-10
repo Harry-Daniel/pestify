@@ -7,16 +7,17 @@
     "icon": "./assets/images/icon.png",
     "scheme": "pestify",
     "userInterfaceStyle": "automatic",
-    "newArchEnabled": true,
     "ios": {
       "supportsTablet": true
     },
     "android": {
+      "package": "com.harryd.pestify",
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "edgeToEdgeEnabled": true
+      "edgeToEdgeEnabled": true,
+      "permissions": ["CAMERA", "READ_MEDIA_IMAGES", "READ_EXTERNAL_STORAGE"]
     },
     "web": {
       "bundler": "metro",
@@ -33,10 +34,24 @@
           "resizeMode": "contain",
           "backgroundColor": "#ffffff"
         }
+      ],
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "usesCleartextTraffic": true
+          }
+        }
       ]
     ],
     "experiments": {
       "typedRoutes": true
+    },
+    "extra": {
+      "router": {},
+      "eas": {
+        "projectId": "5b21e298-b745-4fbf-b4cb-abcffa94b0ae"
+      }
     }
   }
 }

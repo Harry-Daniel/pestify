@@ -1,39 +1,44 @@
-import AntDesign from '@expo/vector-icons/AntDesign';
-import FontAwesome from '@expo/vector-icons/FontAwesome';
-import Ionicons from '@expo/vector-icons/Ionicons';
-import { Tabs } from 'expo-router';
+import AntDesign from "@expo/vector-icons/AntDesign";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import { Tabs } from "expo-router";
 const _layout = () => {
   return (
     <Tabs
-    screenOptions={{
-      headerShown:false,
-
-    }}>
-        <Tabs.Screen
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
+      <Tabs.Screen name="index" options={{ href: null }} />
+      <Tabs.Screen
         name="main"
         options={{
-            title:"Home",
-            tabBarIcon:({color,size})=><AntDesign name="home" size={size} color={color} />
+          title: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <AntDesign name="home" size={size} color={color} />
+          ),
         }}
-        />
-        <Tabs.Screen
+      />
+      <Tabs.Screen
         name="history"
         options={{
-            title:"History",
-            tabBarIcon:({color,size})=><FontAwesome name="history" size={size} color={color} /> 
+          title: "History",
+          tabBarIcon: ({ color, size }) => (
+            <FontAwesome name="history" size={size} color={color} />
+          ),
         }}
-        
-        />
-        <Tabs.Screen
+      />
+      <Tabs.Screen
         name="game"
         options={{
-            title:"Game",
-            tabBarIcon:({color,size})=><Ionicons name="game-controller" size={size} color={color} /> 
+          title: "Game",
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="game-controller" size={size} color={color} />
+          ),
         }}
-        
-        />
-        </Tabs>
-  )
-}
+      />
+    </Tabs>
+  );
+};
 
-export default _layout
+export default _layout;
