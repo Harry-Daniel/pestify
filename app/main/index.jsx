@@ -55,7 +55,7 @@ const Home = () => {
       if (!result.canceled && result.assets?.length > 0) {
         setPhoto(result.assets[0]); // 👈 Use the first image only
       }
-    } catch {
+    } catch (error) {
       console.log(error);
     }
   };
@@ -95,7 +95,7 @@ const Home = () => {
         <Text style={styles.randomQuote}>
           Pests nibble, yields crumble. But with us, your harvest stays humble
         </Text>
-        <Text style={styles.detectText}>Let's detect some pests</Text>
+        <Text style={styles.detectText}>Let&apos;s detect some pests</Text>
       </View>
       <View style={styles.buttonsContainer}>
         <View style={styles.buttonOuterContainer}>

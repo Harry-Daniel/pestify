@@ -2,6 +2,10 @@ import { Feather, Fontisto } from "@expo/vector-icons";
 import { useEffect, useState } from "react";
 import { Image, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
+// 10.0.2.2 is the host machine as seen from the Android emulator.
+// Set EXPO_PUBLIC_API_URL in .env.local to point at a different server.
+const API_URL = process.env.EXPO_PUBLIC_API_URL ?? "http://10.0.2.2:8000";
+
 const PhotoPreviewSection = ({
   photo,
   result,
@@ -31,19 +35,13 @@ const PhotoPreviewSection = ({
       try {
         setPest("Loading...");
 
-        const response = await fetch(
-          "http://192.168.29.65:8000/api/predict/",
-          {
-            //Emmanuel's IP
-            // const response = await fetch("http://192.168.137.1:8000/api/predict/", {
-            // const response = await fetch("http://10.0.2.2:8000/api/predict/", {
-            method: "POST",
-            headers: {
-              "Content-Type": "multipart/form-data",
-            },
-            body: formData,
-          }
-        );
+        const response = await fetch(`${API_URL}/api/predict/`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+          body: formData,
+        });
 
         const json = await response.json();
         console.log("Prediction result:", json);
