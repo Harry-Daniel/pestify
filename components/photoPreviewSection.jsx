@@ -44,7 +44,6 @@ const PhotoPreviewSection = ({
         });
 
         const json = await response.json();
-        console.log("Prediction result:", json);
         if (json.label === "unknown") {
           setPest("No pest detected, retake image");
         } else {

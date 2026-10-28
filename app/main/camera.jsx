@@ -16,7 +16,6 @@ export default function Camera() {
   const [identifiedPestsList, setIdentifiedPestsList] = useState([]);
   const cameraRef = useRef(null);
   const navigation = useNavigation();
-  console.log(identifiedPestsList);
   useEffect(() => {
     const loadNames = async () => {
       try {

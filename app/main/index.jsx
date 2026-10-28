@@ -16,7 +16,6 @@ const Home = () => {
     navigation.navigate("camera");
   };
 
-  console.log(identifiedPestsList);
   useEffect(() => {
     const loadNames = async () => {
       try {
@@ -56,7 +55,7 @@ const Home = () => {
         setPhoto(result.assets[0]); // 👈 Use the first image only
       }
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
