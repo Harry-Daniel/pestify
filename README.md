@@ -1,55 +1,100 @@
-# Welcome to your Expo app 👋
+# Pestify
 
-This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
+Pestify is a mobile app that helps farmers identify crop pests from a photo. Snap a picture or pick one from the gallery, and a machine-learning model classifies the pest. The app then shows what damage it causes and how to deal with it.
 
-## Get started
+<p align="center">
+  <img src="docs/screenshots/home.jpg" width="200" alt="Home screen" />
+  <img src="docs/screenshots/detail.jpg" width="200" alt="Pest detail screen for aphids" />
+  <img src="docs/screenshots/history.jpg" width="200" alt="Scan history" />
+  <img src="docs/screenshots/game.jpg" width="200" alt="Guess-the-pest game" />
+</p>
 
-1. Install dependencies
+## Features
 
-   ```bash
-   npm install
-   ```
+- **Detect pests from a photo:** take a picture with the in-app camera or upload one from the gallery. The image is sent to a prediction API and the result comes back in seconds.
+- **Pest details:** each detected pest gets a page with a photo, its effects on crops, and recommended control methods.
+- **Scan history:** pests you've identified are saved on the device, with the most recent at the top. Tap any entry to see its details again.
+- **Guess-the-pest game:** a quiz that shows a pest photo and asks you to name it, with a short fact after each answer.
+- **Handles uncertainty:** if the model is not confident the photo contains a known pest, the app asks you to retake the image instead of guessing.
 
-2. Start the app
+### Supported pests
 
-   ```bash
-   npx expo start
-   ```
+Aphid · Armyworm · Diamondback moth · Grasshopper · Whitefly
 
-In the output, you'll find options to open the app in a
+## Tech stack
 
-- [development build](https://docs.expo.dev/develop/development-builds/introduction/)
-- [Android emulator](https://docs.expo.dev/workflow/android-studio-emulator/)
-- [iOS simulator](https://docs.expo.dev/workflow/ios-simulator/)
-- [Expo Go](https://expo.dev/go), a limited sandbox for trying out app development with Expo
+- [React Native](https://reactnative.dev) with [Expo](https://expo.dev) (SDK 53)
+- [Expo Router](https://docs.expo.dev/router/introduction/) for file-based tab and stack navigation
+- `expo-camera` and `expo-image-picker` for capturing images
+- `@react-native-async-storage/async-storage` for on-device scan history
 
-You can start developing by editing the files inside the **app** directory. This project uses [file-based routing](https://docs.expo.dev/router/introduction).
+## How it works
 
-## Get a fresh project
-
-When you're ready, run:
-
-```bash
-npm run reset-project
+```
+ Camera / gallery ──► photo ──► POST /api/predict/ ──► { label, confidence, top_k }
+                                  (prediction server)            │
+                                                                 ▼
+                         History (AsyncStorage) ◄── Pest detail page (pest_info.json)
 ```
 
-This command will move the starter code to the **app-example** directory and create a blank **app** directory where you can start developing.
+1. The app uploads the photo as `multipart/form-data` to `POST /api/predict/`.
+2. The server runs the classification model and returns the top label with its confidence, for example:
+   ```json
+   { "label": "aphid", "confidence": 0.98, "top_k": [{ "label": "aphid", "confidence": 0.98 }, ...] }
+   ```
+3. If the label is `unknown`, the app prompts for a new photo. Otherwise it shows the pest's details from [`pest_info.json`](pest_info.json) and saves it to the history.
 
-## Learn more
+> **Note:** this repository contains the mobile app only. The prediction server and model live separately: <!-- TODO: link the backend/model repository here -->
 
-To learn more about developing your project with Expo, look at the following resources:
+## Getting started
 
-- [Expo documentation](https://docs.expo.dev/): Learn fundamentals, or go into advanced topics with our [guides](https://docs.expo.dev/guides).
-- [Learn Expo tutorial](https://docs.expo.dev/tutorial/introduction/): Follow a step-by-step tutorial where you'll create a project that runs on Android, iOS, and the web.
+### Prerequisites
 
-## Join the community
+- Node.js 18 or newer
+- An Android emulator (Android Studio) or Android device
+- The prediction server running and listening on port `8000`
 
-Join our community of developers creating universal apps.
+### Run the app
 
-- [Expo on GitHub](https://github.com/expo/expo): View our open source platform and contribute.
-- [Discord community](https://chat.expo.dev): Chat with Expo users and ask questions.
+```bash
+npm install
+npx expo start
+```
 
-<!-- UX upgrades
-When a pest that is in the list is scanned again , it should be filtered out of the list and added to the top.
+Press `a` to open the app on a running Android emulator.
 
- -->
+This project uses Expo SDK 53, so it needs the matching Expo Go build. `npx expo start` installs it on an emulator automatically. On a physical Android device, download the SDK 53 version from [expo.dev/go](https://expo.dev/go).
+
+### Point the app at your server
+
+By default the app calls `http://10.0.2.2:8000`, which is how the Android emulator reaches your computer's `localhost`. To use a different server, such as when testing on a physical phone on the same Wi-Fi, create a `.env.local` file:
+
+```bash
+EXPO_PUBLIC_API_URL=http://192.168.1.10:8000
+```
+
+Then restart with `npx expo start -c` to clear the cache.
+
+## Project structure
+
+```
+app/
+  main/        Home, camera and pest detail screens
+  history/     Scan history list and detail
+  game/        Guess-the-pest quiz
+components/    Photo preview (sends image to the API), list and subtitle UI
+assets/        App icons and pest images
+pest_info.json Pest descriptions, effects and recommendations
+```
+
+## Possible improvements
+
+- Ship the model on-device so detection works offline
+- Add timestamps and the captured photo to history entries
+- Support more pest species
+
+<!-- TODO: credit teammates here, e.g.
+## Team
+- Mawuko Senyo Hayibor: mobile app
+- Name: model / backend
+-->
