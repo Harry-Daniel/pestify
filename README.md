@@ -2,6 +2,8 @@
 
 Pestify is a mobile app that helps farmers identify crop pests from a photo. Snap a picture or pick one from the gallery, and a machine-learning model classifies the pest. The app then shows what damage it causes and how to deal with it.
 
+▶️ **[Watch the demo video](https://drive.google.com/file/d/16tlqBMcyCcbLpBpJKAYeIB1ZUMEamDiO/view)**
+
 <p align="center">
   <img src="docs/screenshots/home.jpg" width="200" alt="Home screen" />
   <img src="docs/screenshots/detail.jpg" width="200" alt="Pest detail screen for aphids" />
